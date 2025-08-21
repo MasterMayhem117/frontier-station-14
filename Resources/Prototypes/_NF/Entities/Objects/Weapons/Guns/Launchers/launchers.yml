@@ -80,6 +80,30 @@
 
 - type: entity
   parent: [ BaseC1Contraband, NFWeaponLauncherChinaLake ]
+  id: NFWeaponLauncherCleanade
+  name: RCDS
+  description: The Rapid Cleanade Delivery System, or more commonly the China Puddle, a janitor's right hand. Launches 40mm Cleanade Grenades. Go to war on Grime. Mind the fragile stuff!
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Guns/Launchers/RCDS.rsi
+  - type: Clothing
+    sprite: _NF/Objects/Weapons/Guns/Launchers/RCDS.rsi
+    slots:
+    - Back
+    - Belt
+    - suitStorage
+  - type: BallisticAmmoProvider
+    proto: null
+    whitelist:
+      tags:
+      - NFGrenadeCleanade
+  - type: StaticPrice
+    price: 50
+  - type: NFWeaponDetails
+    manufacturer: weapon-details-manufacturer-nanotrasen-munitions
+
+- type: entity
+  parent: [ BaseC1Contraband, NFWeaponLauncherChinaLake ]
   id: NFWeaponLauncherMail
   name: RPDS
   description: The Rapid Parcel Delivery System, a mail carrier's right hand. Launches mail capsules.
