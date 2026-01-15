@@ -185,3 +185,65 @@
   - type: Utensil
     types:
       - Knife
+
+- type: entity
+  id: MedPodLocatorUnpowered
+  parent: BaseItem
+  name: Emergency Medical Pod Locator
+  description: A scanner that Detects the short range emergency transponder signal from Emergency Medical Pods.
+  suffix: Unpowered
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Specific/Medical/medpodlocator.rsi
+    layers:
+    - state: icon
+    - state: screen
+      shader: unshaded
+      visible: false
+      map: ["enum.ToggleableVisuals.Layer"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.GasDepositScannerVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: data, visible: true }
+          False: { state: screen }
+  - type: ItemToggle
+  - type: ProximityBeeper
+  - type: ProximityDetector
+    range: 20
+    components:
+    - type: MedicalPod
+  - type: Beeper
+    isMuted: true
+    minBeepInterval: 0.15
+    maxBeepInterval: 1.00
+    beepSound:
+      path: "/Audio/Items/locator_beep.ogg"
+      params:
+        maxDistance: 1
+        volume: -8
+
+- type: entity
+  id: MedPodLocator
+  parent: [ MedPodLocatorUnpowered, PowerCellSlotSmallItem ]
+  suffix: Powered
+  components:
+  - type: PowerCellDraw
+    drawRate: 1
+    useRate: 0
+  - type: ToggleCellDraw
+
+- type: entity
+  id: MedPodLocatorEmpty
+  parent: MedPodLocator
+  suffix: Empty
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default

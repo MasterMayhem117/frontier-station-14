@@ -3,6 +3,7 @@
   id: MedicalPodFilled
   suffix: Filled, Random
   components:
+  - type: MedicalPod
   - type: StorageFill
     contents:
     - id: SpawnRandomHumanoidCorpseMedicalBountyService
